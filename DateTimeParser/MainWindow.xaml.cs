@@ -1,13 +1,5 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+
 
 namespace DateTimeParser
 {
@@ -24,6 +16,41 @@ namespace DateTimeParser
         private void convertBtn_Click(object sender, RoutedEventArgs e)
         {
             var date = new DateOnly();
+
+            if (formatInputTextBox.Text == "") {
+                if (isUsingTryCheckBox.IsChecked == true)
+                {
+                    if (!DateOnly.TryParse(inputTextBox.Text, out date))
+                    {
+                        outputTextBlock.Text = "Некорректный ввод! попробуйте еще раз!";
+                        return;
+                    }
+                }
+                else
+                {
+                    date = DateOnly.Parse(inputTextBox.Text);
+                    
+                }
+                
+            }
+            else
+            {
+                if (isUsingTryCheckBox.IsChecked == true) {
+                    if (!DateOnly.TryParseExact(inputTextBox.Text, formatInputTextBox.Text, out date))
+                    {
+                        outputTextBlock.Text = "Некорректный ввод! попробуйте еще раз!";
+                        return;
+                    }
+                }
+                else
+                {
+                    date = DateOnly.ParseExact(inputTextBox.Text, formatInputTextBox.Text);
+
+                }
+            }
+
+            outputTextBlock.Text = $"Год:{date.Year}  Месяц:{date.Month}  День:{date.Day}";
+
         }
     }
 }

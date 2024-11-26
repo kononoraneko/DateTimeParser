@@ -15,12 +15,14 @@
         <StackPanel Grid.Column="0" Margin="20">
             <UniformGrid>
                 <TextBox x:Name="inputTextBox">dsadas</TextBox>
-                <TextBox x:Name="formatInputTextBox">dasds</TextBox>
+                <TextBox x:Name="formatInputTextBox"></TextBox>
             </UniformGrid>
 
-            <TextBlock Margin="0,20,0,0">Год:  Месяц:  День:</TextBlock>
+            <TextBlock x:Name="outputTextBlock" Margin="0,20,0,0">Год:  Месяц:  День:</TextBlock>
 
             <Button x:Name="convertBtn" Margin="0,20,0,0" Click="convertBtn_Click">Конвертировать</Button>
+
+            <CheckBox x:Name="isUsingTryCheckBox" Margin="0,20,0,0">Проверять корректность ввода</CheckBox>
         </StackPanel>
 
     </Grid>
