@@ -15,42 +15,87 @@ namespace DateTimeParser
 
         private void convertBtn_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void convertBtnDate_Click(object sender, RoutedEventArgs e)
+        {
             var date = new DateOnly();
 
-            if (formatInputTextBox.Text == "") {
-                if (isUsingTryCheckBox.IsChecked == true)
+            if (formatInputTextBoxDate.Text == "")
+            {
+                if (isUsingTryCheckBoxDate.IsChecked == true)
                 {
-                    if (!DateOnly.TryParse(inputTextBox.Text, out date))
+                    if (!DateOnly.TryParse(inputTextBoxDate.Text, out date))
                     {
-                        outputTextBlock.Text = "Некорректный ввод! попробуйте еще раз!";
+                        outputTextBlockDate.Text = "Некорректный ввод! попробуйте еще раз!";
                         return;
                     }
                 }
                 else
                 {
-                    date = DateOnly.Parse(inputTextBox.Text);
-                    
+                    date = DateOnly.Parse(inputTextBoxDate.Text);
                 }
-                
+
             }
             else
             {
-                if (isUsingTryCheckBox.IsChecked == true) {
-                    if (!DateOnly.TryParseExact(inputTextBox.Text, formatInputTextBox.Text, out date))
+                if (isUsingTryCheckBoxDate.IsChecked == true)
+                {
+                    if (!DateOnly.TryParseExact(inputTextBoxDate.Text, formatInputTextBoxDate.Text, out date))
                     {
-                        outputTextBlock.Text = "Некорректный ввод! попробуйте еще раз!";
+                        outputTextBlockDate.Text = "Некорректный ввод! попробуйте еще раз!";
                         return;
                     }
                 }
                 else
                 {
-                    date = DateOnly.ParseExact(inputTextBox.Text, formatInputTextBox.Text);
+                    date = DateOnly.ParseExact(inputTextBoxDate.Text, formatInputTextBoxDate.Text);
 
                 }
             }
+            outputTextBlockDate.Text = $"Год:{date.Year}  Месяц:{date.Month}  День:{date.Day}";
+        }
 
-            outputTextBlock.Text = $"Год:{date.Year}  Месяц:{date.Month}  День:{date.Day}";
 
+
+        private void convertBtnTime_Click(object sender, RoutedEventArgs e)
+        {
+            var time = new TimeOnly();
+
+            if (formatInputTextBoxTime.Text == "")
+            {
+                if (isUsingTryCheckBoxTime.IsChecked == true)
+                {
+                    if (!TimeOnly.TryParse(inputTextBoxTime.Text, out time))
+                    {
+                        outputTextBlockTime.Text = "Некорректный ввод! попробуйте еще раз!";
+                        return;
+                    }
+                }
+                else
+                {
+                    time = TimeOnly.Parse(inputTextBoxTime.Text);
+                }
+
+            }
+            else
+            {
+                if (isUsingTryCheckBoxTime.IsChecked == true)
+                {
+                    if (!TimeOnly.TryParseExact(inputTextBoxTime.Text, formatInputTextBoxTime.Text, out time))
+                    {
+                        outputTextBlockTime.Text = "Некорректный ввод! попробуйте еще раз!";
+                        return;
+                    }
+                }
+                else
+                {
+                    time = TimeOnly.ParseExact(inputTextBoxTime.Text, formatInputTextBoxTime.Text);
+
+                }
+            }
+            outputTextBlockTime.Text = $"Час:{time.Hour}  Минута:{time.Minute}  Секунда:{time.Second}  Миллисекунда:{time.Millisecond} ";
         }
     }
 }

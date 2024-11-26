@@ -14,16 +14,33 @@
 
         <StackPanel Grid.Column="0" Margin="20">
             <UniformGrid>
-                <TextBox x:Name="inputTextBox">dsadas</TextBox>
-                <TextBox x:Name="formatInputTextBox"></TextBox>
+                <Label>Ввод:</Label>
+                <Label ToolTip="Формат строки(если пустой, то не используется)">Формат строки(если пустой, то не используется)</Label>
+                <TextBox x:Name="inputTextBoxDate">25.01.06</TextBox>
+                <TextBox x:Name="formatInputTextBoxDate">dd.mm.yy</TextBox>
             </UniformGrid>
 
-            <TextBlock x:Name="outputTextBlock" Margin="0,20,0,0">Год:  Месяц:  День:</TextBlock>
+            <TextBlock x:Name="outputTextBlockDate" Margin="0,20,0,0">Год:  Месяц:  День:</TextBlock>
 
-            <Button x:Name="convertBtn" Margin="0,20,0,0" Click="convertBtn_Click">Конвертировать</Button>
+            <Button x:Name="convertBtnDate" Margin="0,20,0,0" Click="convertBtnDate_Click">Конвертировать</Button>
 
-            <CheckBox x:Name="isUsingTryCheckBox" Margin="0,20,0,0">Проверять корректность ввода</CheckBox>
+            <CheckBox x:Name="isUsingTryCheckBoxDate" Margin="0,20,0,0" IsChecked="True">Проверять корректность ввода</CheckBox>
         </StackPanel>
 
+
+        <StackPanel Grid.Column="1" Margin="20">
+            <UniformGrid>
+                <Label>Ввод:</Label>
+                <Label ToolTip="Формат строки(если пустой, то не используется)">Формат строки(если пустой, то не используется)</Label>
+                <TextBox x:Name="inputTextBoxTime">17:39:10:00</TextBox>
+                <TextBox x:Name="formatInputTextBoxTime">HH:mm:ss:ff</TextBox>
+            </UniformGrid>
+
+            <TextBlock x:Name="outputTextBlockTime" Margin="0,20,0,0">Час:  Минута:  Секунда:  Миллисекунда: </TextBlock>
+
+            <Button x:Name="convertBtnTime" Margin="0,20,0,0" Click="convertBtnTime_Click">Конвертировать</Button>
+
+            <CheckBox x:Name="isUsingTryCheckBoxTime" Margin="0,20,0,0" IsChecked="True">Проверять корректность ввода</CheckBox>
+        </StackPanel>
     </Grid>
 </Window>
